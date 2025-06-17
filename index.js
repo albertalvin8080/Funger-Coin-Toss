@@ -37,7 +37,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         display.load();
-        display.play();
+        display.play().catch(err => {
+            console.warn("Video couldn't autoplay:", err);
+        });
         display.onended = () => {
             display.classList.add("hidden");
             options.classList.remove("hidden");
