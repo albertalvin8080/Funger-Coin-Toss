@@ -29,7 +29,11 @@ document.addEventListener('DOMContentLoaded', () => {
         display.classList.remove("hidden");
         const option = current.id;
 
-        const isHeads = Math.random() < 0.5;
+        const randomByte = new Uint8Array(1);
+        crypto.getRandomValues(randomByte);
+        // even = heads, odd = tails
+        const isHeads = (randomByte[0] & 1) === 0;
+
         if (isHeads) {
             source.src = "assets/heads.mp4";
         } else {
